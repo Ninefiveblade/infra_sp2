@@ -5,26 +5,27 @@
 #### Каждое произведение имеет систему оценки, исходяющию из отзывов.
 #### Теперь пользователи могут быстро выбрать понравившееся кино, музыку или еще что-то творческое!
 
-#### Авторы: Алексей и Иван, Яндекс Практикум.
-#### Технологии: Django REST, JWT, Python 3.6.7
+#### Автор: Иван, Яндекс Практикум.
+#### Технологии: Django REST, Docker, JWT, Python 3.6.7
 
 ## Установить проект:
 
 ```git clone git@github.com:Ninefiveblade/api_yamdb.git```
 
-## Установить и активировать виртуальное окружение:
+## Наполнение .env path (your_path/infra/.env)
 
-```python3 -m venv venv```
-```source venv/bin/activate```
+```
+ALLOWED_HOSTS = "Your hosts"
+SECRET_KEY = "Your secret key"
+ENTER_PASS = "Your email Email SMTP PASS"
 
-## Установить зависимости:
-
-```pip install -r requirements.txt```
-
-## Выполнить миграции:
-
-```./manage.py makemigrations```
-```./manage.py migrate```
+DB_ENGINE=django.db.backends.postgresql
+DB_NAME=postgres
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD= "your passeord"
+DB_HOST="your container name"
+DB_PORT=5432 
+```
 
 ## Запуск тестов:
 
@@ -34,7 +35,24 @@
 
 ## Запустить проект:
 
-``` ./manage.py runserver```
+```your_path/infra/docker-compose up -d```
+
+## Выполнить миграции:
+
+```docker-compose exec web python manage.py makemigrations```
+```docker-compose exec web python manage.py migrate```
+
+## Создать суперпользователя:
+
+```docker-compose exec web python manage.py createsuperuser```
+
+## Собрать статику для корректного отображения страниц:
+
+```docker-compose exec web python manage.py collectstatic --no-input```
+
+## Заполнить базу данных:
+
+```docker-compose exec web python manage.py update```
 
 ## Документация:
 
@@ -42,14 +60,20 @@
 
 ## Пример запроса:
 #### Получить все произведения:
+
 ```http://127.0.0.1:8000/api/v1/titles/```
 
 ## Зарегистрироваться:
+
 ```http://127.0.0.1:8000/api/v1/auth/signup/```
 
 ## Получить токен:
 ```http://127.0.0.1:8000/api/v1/auth/token/```
 
+## Сохранить дамп базы данных:
+
+```docker-compose exec web python manage.py dumpdata > fixtures.json```
+
 ## License
 
-(c) Ivan and Alexey Co. Yandex Practicum
+(c) Ivan. Yandex Practicum
