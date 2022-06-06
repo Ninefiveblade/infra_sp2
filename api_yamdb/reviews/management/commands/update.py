@@ -12,7 +12,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         try:
             with open(
-                f'{settings.STATICFILES_DIRS[0]}data/category.csv'
+                f'{settings.STATIC_ROOT}data/category.csv'
             ) as table:
                 reader = csv.DictReader(table)
                 models.Category.objects.all().delete()
@@ -24,7 +24,7 @@ class Command(BaseCommand):
                     )
                 print('Category upload ready')
             with open(
-                f'{settings.STATICFILES_DIRS[0]}data/genre.csv'
+                f'{settings.STATIC_ROOT}data/genre.csv'
             ) as table:
                 reader = csv.DictReader(table)
                 models.Genre.objects.all().delete()
@@ -36,7 +36,7 @@ class Command(BaseCommand):
                     )
                 print('Genre upload ready')
             with open(
-                f'{settings.STATICFILES_DIRS[0]}data/titles.csv'
+                f'{settings.STATIC_ROOT}data/titles.csv'
             ) as table:
                 reader = csv.DictReader(table)
                 models.Title.objects.all().delete()
@@ -49,7 +49,7 @@ class Command(BaseCommand):
                     )
                 print('Title upload ready')
             with open(
-                f'{settings.STATICFILES_DIRS[0]}data/genre_title.csv'
+                f'{settings.STATIC_ROOT}data/genre_title.csv'
             ) as table:
                 reader = csv.DictReader(table)
                 models.Title.genre.through.objects.all().delete()
@@ -61,7 +61,7 @@ class Command(BaseCommand):
                     )
                 print('GenreTitle upload ready')
             with open(
-                f'{settings.STATICFILES_DIRS[0]}data/users.csv'
+                f'{settings.STATIC_ROOT}data/users.csv'
             ) as table:
                 reader = csv.DictReader(table)
                 YamDBUser.objects.all().delete()
@@ -77,7 +77,7 @@ class Command(BaseCommand):
                     )
                 print('YamDBUser upload ready')
             with open(
-                f'{settings.STATICFILES_DIRS[0]}data/review.csv'
+                f'{settings.STATIC_ROOT}data/review.csv'
             ) as table:
                 reader = csv.DictReader(table)
                 models.Review.objects.all().delete()
@@ -92,7 +92,7 @@ class Command(BaseCommand):
                     )
                 print('Review upload ready')
             with open(
-                f'{settings.STATICFILES_DIRS[0]}data/comments.csv'
+                f'{settings.STATIC_ROOT}data/comments.csv'
             ) as table:
                 reader = csv.DictReader(table)
                 models.Comment.objects.all().delete()
