@@ -8,12 +8,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 load_dotenv()
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY', default='KE8-Y7F-6R-Y5U')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', default=['*'])
 
 AUTH_USER_MODEL = 'users.YamDBUser'
 
@@ -22,7 +22,7 @@ AUTH_USER_MODEL = 'users.YamDBUser'
 EMAIL_USE_SSL = True
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_HOST_USER = 'cherep1.92@yandex.ru'
-EMAIL_HOST_PASSWORD = os.getenv('ENTER_PASS')
+EMAIL_HOST_PASSWORD = os.getenv('ENTER_PASS', default='Some_Pass')
 EMAIL_PORT = 465
 
 # Application definition
