@@ -76,4 +76,4 @@ DB_PORT=5432
 
 ## License
 
-(c) Ivan. Yandex Practicum
+[LICENSE MIT](LICENSE)
